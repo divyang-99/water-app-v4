@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Aumsat Water Budgeting App" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/static/assets/aumsat_logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.9.0/cdn/themes/light.css"
+    />
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.9.0/cdn/shoelace-autoloader.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <!-- Leaflet Measure CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/leaflet-measure@3.1.0/dist/leaflet-measure.min.css"
+    />
+
+    <!-- Leaflet Measure JS -->
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-measure@3.1.0/dist/leaflet-measure.min.js"></script>
+
+    <!-- Leaflet Sleep JS -->
+    <script src="/static/js/Leaflet.Sleep.js"></script>
+    <link rel="stylesheet" href="/static/css/dashboard.css" />
+    <title>Aumsat Water Budget App</title>
+  </head>
+  <body>
+    <div id="parent-container">
+      <!-- Responsive Navbar -->
+      <nav id="navbar">
+        <div class="container">
+          <!-- Logo -->
+          <a href="#" class="brand-logo">
+            <img
+              src="/static/assets/aumsat_logo.png"
+              alt="Logo"
+              id="navbar-logo"
+            />
+          </a>
+          <!-- Dashboard Title -->
+          <span id="dashboard-title"
+            >Aumsat&copy; Water Demand Forecast Dashboard&trade;</span
+          >
+
+          <!-- Logout Button -->
+          <div class="logout-button-container">
+            <sl-button
+              variant="danger"
+              class="logout-button"
+              size="medium"
+              onclick="logout()"
+            >
+              Logout
+            </sl-button>
+
+            <script type="text/javascript">
+              function logout() {
+                window.location.href = "/logout";
+              }
+            </script>
+          </div>
+        </div>
+      </nav>
+      <!-- Body -->
+      <div id="main">
+        <!-- Map Div -->
+        <div id="map"></div>
+        <!-- Sidebar Div -->
+        <div id="sidebar">
+          <h3>Water Demand Forecast</h3>
+          <div id="sidebar-content">
+            <!-- Population Count Input -->
+            <sl-input
+              type="number"
+              placeholder="eg: 21500"
+              min="0"
+              id="population-count"
+              class="form-input"
+              label="Present Population of the Area"
+              size="small"
+            ></sl-input>
+            <!-- Per Capita Water Demand Input -->
+            <sl-input
+              type="number"
+              placeholder="eg: 22"
+              min="0"
+              id="per-capita-water-requirement"
+              class="form-input"
+              label="Water Demand per Person (Litres Per Day) (including Leakages) "
+              size="small"
+            ></sl-input>
+            <!-- Demand Growth Rate Input -->
+            <sl-input
+              type="number"
+              placeholder="eg: 2.5"
+              min="0"
+              max="100"
+              id="demand-growth-rate"
+              class="form-input"
+              label="Demand Growth Rate (in %)"
+              size="small"
+            ></sl-input>
+            <!-- Number of Years Input -->
+            <sl-input
+              type="number"
+              placeholder="eg: 15"
+              min="0"
+              id="number-of-years"
+              class="form-input"
+              label="Number of Years"
+              help-text="Number of years for which the forecast is to be made"
+              size="small"
+            ></sl-input>
+            <!-- Forecast Model Select -->
+            <sl-select
+              id="forecast-model-select"
+              class="form-input"
+              label="Model"
+              help-text="Select the model to be used for forecasting"
+              placeholder="Select a Model"
+              size="small"
+            >
+              <sl-icon name="diagram-3" slot="prefix"></sl-icon>
+              <sl-option value="linear">Linear Model</sl-option>
+              <sl-option value="exponential">Exponential Model</sl-option>
+            </sl-select>
+            <sl-button
+              variant="success"
+              class="form-input"
+              id="submit-button"
+              style="width: 100%"
+              size="small"
+              >Calculate Forecasted Demand</sl-button
+            >
+            <sl-alert variant="success" duration="2000" closable>
+              <sl-icon slot="icon" name="check2-circle"></sl-icon>
+              <strong>Success!</strong><br />
+              Scroll Down to see the results.
+            </sl-alert>
+            <div id="output" class="form-output">
+              <div class="demand-row">
+                <h3>Current Water Demand</h3>
+                <p id="current-water-demand-meter-cube-per-year">&ndash;</p>
+              </div>
+              <div class="demand-row">
+                <h3>Forecasted Water Demand</h3>
+                <p id="forecasted-water-demand-meter-cube-per-year">&ndash;</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Data Scripts -->
+    <script src="/static/data/100mmPipeline.js"></script>
+    <script src="/static/data/150mmPipeline.js"></script>
+    <script src="/static/data/75mmPipeline.js"></script>
+    <script src="/static/data/BedlaBoundary.js"></script>
+    <script src="/static/data/Leakages.js"></script>
+    <script src="/static/data/OverheadTank.js"></script>
+    <script src="/static/data/Valves.js"></script>
+
+    <!-- Contingency Scripts -->
+    <script type="text/javascript">
+      window.addEventListener("beforeunload", (event) => {
+        window.location.href = "/logout"; // redirect to logout route
+      });
+    </script>
+
+    <!-- Main Scripts -->
+    <script src="/static/js/map.js"></script>
+    <script src="/static/js/sidebar.js"></script>
+  </body>
+</html>

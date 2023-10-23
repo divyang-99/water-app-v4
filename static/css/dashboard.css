@@ -1,0 +1,217 @@
+:root {
+  /* Color Variables for Modularity */
+  --navbar-bg-color: #000000;
+  --navbar-text-color: #ffffff;
+  --navbar-hover-color: #ffd700;
+  --main-bg-color: #000000;
+  --sidebar-bg-primary: #aedff7;
+  --sidebar-bg-secondary: #e5f7ff;
+  --divider-color: #e0e0e0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  background-color: var(--main-bg-color);
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+#parent-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* viewport height */
+  width: 100%; /* viewport width */
+  padding: 0;
+  margin: 0;
+  /* overflow: hidden; */
+}
+
+#parent-container,
+#parent-container * {
+  box-sizing: border-box;
+}
+
+/* Navbar Styles */
+#navbar {
+  background-color: var(--navbar-bg-color);
+  color: var(--navbar-text-color);
+  width: 100%;
+  height: 50px; /* Increased to accommodate logo height */
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  padding: 0.5rem 5% 0rem 5%; 
+  margin: 0.25rem 0rem 0rem 0rem;
+}
+
+#navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; 
+}
+
+.logout-button-container {
+  order: 3;
+  margin: 0;
+  padding: 0;
+}
+
+.logout-button {
+  background-color: red;
+  color: white;
+  border: none;
+  /* padding: 8px 16px; */
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  /* Hover effect */
+  &:hover {
+      background-color: darkred;
+  }
+}
+
+.brand-logo img {
+  height: 60px;
+  width: auto;
+  margin: 0.5rem; /* Reset margins */
+}
+
+
+#dashboard-title {
+  color: var(--navbar-text-color);
+  font-size: 2.5rem;
+  flex: 1;
+  text-align: center;
+  line-height: 1; /* Ensures line height doesn't add extra height */
+  margin: 0; /* Reset margins */
+}
+
+/* Main Container */
+#main {
+  display: flex;
+  flex: 1; /* This ensures it takes the remaining height */
+  width: 100%;
+  height: calc(100vh - 50px); /* 100vh minus navbar's height */
+  padding: 5px 10px 10px 10px;
+  box-sizing: border-box;
+}
+
+#map {
+  flex: 7;
+  height: 100%;
+  background-color: var(--divider-color);
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.leaflet-control-measure-toggle::before {
+  content: "\f546"; /* This is the unicode for the 'fa-area-chart' icon in Font Awesome. You can replace it with the unicode of any other icon you prefer. */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#sidebar {
+  flex: 3;
+  padding: 0.5rem 1rem;
+  overflow-y: auto;
+  overflow-x: auto;
+  background-color: var(--sidebar-bg-primary);
+  border-radius: 10px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+#sidebar h3 {
+  font-size: large;
+  padding: 0rem;
+  margin: 0rem;
+}
+
+#sidebar-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* max-height: calc(100% - 1rem);  Adjust 150px depending on the height of #output */
+  padding: 0.5rem 0rem;
+  margin-bottom: 10px; /* This will give space between #sidebar-content and #output */
+  box-sizing: border-box;
+  /* overflow-y: auto; */
+}
+
+.form-input {
+  padding: 0rem 0rem 0.25rem 0rem;
+}
+
+/* Modern Scrollbar Styles */
+
+/* For WebKit browsers (Chrome, Safari, newer versions of Opera) */
+#sidebar::-webkit-scrollbar {
+  width: 4px; /* Width of the scrollbar */
+}
+
+#sidebar::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5); /* Color of the slider (or thumb) */
+  border-radius: 4px; /* Rounded corners on the slider */
+}
+
+#sidebar::-webkit-scrollbar-track {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.1
+  ); /* Color of the track, or the background fill */
+}
+
+/* For Firefox */
+#sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.1);
+}
+
+#submit-btn {
+  margin: 1rem 0rem;
+}
+
+#output {
+  background-color: var(--sidebar-bg-secondary);
+  width: 100%;
+  display: flex;
+  flex-direction: column; /* Change to column so rows are stacked vertically */
+  align-items: center;
+  border-radius: 5px;
+  margin: 0.5rem 0rem 0rem 0rem;
+  padding: 0rem 0.5rem;
+}
+
+#output h3 {
+  font-size: small;
+  margin: 0rem;
+  padding: 0rem;
+}
+
+.demand-row {
+  display: flex; /* Making the div flex to allow its children (h3 and p) to be inline */
+  align-items: center; /* Vertically align h3 and p */
+  justify-content: space-between; /* Horizontally space out h3 and p */
+  width: 100%; /* Take full width of parent div */
+  padding: 0.25rem 0; /* Some vertical padding between the rows */
+  margin: 0;
+}

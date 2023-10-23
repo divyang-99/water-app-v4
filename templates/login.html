@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Aumsat Water Budgeting App" />
+    <link rel="icon" href="/static/assets/aumsat_logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.9.0/cdn/themes/light.css"
+    />
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.9.0/cdn/shoelace-autoloader.js"
+    ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/css/login.css" />
+    <title>Login</title>
+  </head>
+  <body>
+    <div class="login-container">
+      <!-- Left side with image -->
+      <div class="image-container">
+        <img
+          src="https://source.unsplash.com/1600x900/?nature"
+          alt="Background Image"
+        />
+      </div>
+
+      <!-- Right side with form -->
+      <div class="form-container">
+        <div class="form-inner">
+          <div class="avatar">
+            <img src="/static/assets/aumsat_logo.png" alt="Avatar" />
+          </div>
+          <h2>Sign in</h2>
+          <!-- Removed the action and method attributes, as the JS will handle the submission -->
+          <form id="loginForm">
+            <div class="input-group">
+              <label for="username">Username</label>
+              <input type="text" id="username" name="username" required />
+            </div>
+            <div class="input-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" required />
+            </div>
+            <button type="submit" id="loginButton">Sign In</button>
+          </form>
+          <!-- Area to display error messages -->
+          <div id="errorMessage" style="color: red; margin-top: 1rem"></div>
+          <div class="copyright">
+            &copy; 2023 Aumsat Technologies LLP | All Rights Reserved
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scipts go here -->
+    <script src="/static/js/login.js"></script>
+  </body>
+</html>
