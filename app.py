@@ -11,8 +11,8 @@ print(os.getenv('ADMIN_PASSWORD'))  # should print 'admin@123'
 
 
 # Initialize Flask app
-app = Flask(__name__, static_folder="../static",
-            template_folder="../templates")
+app = Flask(__name__, static_folder="/static",
+            template_folder="/templates")
 app.secret_key = os.urandom(24)  # Generate a random key for session management
 
 # Prevent Caching
