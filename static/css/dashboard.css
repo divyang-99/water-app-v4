@@ -21,8 +21,8 @@ html {
   width: 100%;
   font-family: "Poppins", sans-serif;
   background-color: var(--main-bg-color);
-  overflow-x: hidden;
-  overflow-y: hidden;
+  /* overflow-x: hidden;
+  overflow-y: hidden; */
 }
 
 #parent-container {
@@ -46,10 +46,10 @@ html {
   color: var(--navbar-text-color);
   width: 100%;
   height: 50px; /* Increased to accommodate logo height */
-  display: flex; 
-  align-items: center; 
-  justify-content: space-between; 
-  padding: 0.5rem 5% 0rem 5%; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 5% 0rem 5%;
   margin: 0.25rem 0rem 0rem 0rem;
 }
 
@@ -57,7 +57,7 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%; 
+  width: 100%;
 }
 
 .logout-button-container {
@@ -74,27 +74,37 @@ html {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  padding: 0;
+  font-size: calc(0.8rem + 0.5vw);
 
   /* Hover effect */
   &:hover {
-      background-color: darkred;
+    background-color: darkred;
   }
 }
 
-.brand-logo img {
-  height: 60px;
-  width: auto;
-  margin: 0.5rem; /* Reset margins */
+.brand-logo {
+  max-width: 20%; /* Max width for logo container */
+  flex-shrink: 1; /* Allows shrinking */
 }
 
+.brand-logo img {
+  height: 4vw; /* This will adjust height based on viewport width */
+  width: auto;
+  margin: 0.5rem;
+}
 
 #dashboard-title {
   color: var(--navbar-text-color);
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   flex: 1;
+  flex-shrink: 1; /* Allows the title to shrink */
   text-align: center;
-  line-height: 1; /* Ensures line height doesn't add extra height */
-  margin: 0; /* Reset margins */
+  line-height: 1;
+  margin: 0;
+  white-space: wrap; /* Stops the title from wrapping into multiple lines */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Main Container */
@@ -214,4 +224,70 @@ html {
   width: 100%; /* Take full width of parent div */
   padding: 0.25rem 0; /* Some vertical padding between the rows */
   margin: 0;
+}
+
+/* ... Responsive styles ... */
+
+/* Medium Screen Breakpoint */
+@media (max-width: 1024px) and (min-width: 769px) {
+  /* Adjust this breakpoint as per your requirement */
+  #dashboard-title {
+    font-size: calc(
+      1.5rem + 0.5vw
+    ); /* Slightly reduce the font size for medium screens */
+  }
+
+  .brand-logo img {
+    height: 6.5vw; /* Adjust the logo size for medium screens */
+  }
+
+  .logout-button {
+    font-size: calc(0.75rem + 0.4vw);
+  }
+}
+
+/* Small Screen Breakpoint */
+@media (max-width: 768px) {
+  /* 1. Navbar */
+  #navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem 2%;
+  }
+
+  #dashboard-title {
+    font-size: calc(1.2rem + 1vw);
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .brand-logo img {
+    height: 8vw;
+  }
+
+  .logout-button {
+    font-size: calc(0.7rem + 0.3vw);
+  }
+
+  /* 2. Main Container */
+  #main {
+    flex-direction: column;
+  }
+
+  #map,
+  #sidebar {
+    margin-right: 0;
+    margin-bottom: 10px;
+    width: 100%;
+    flex: none;
+  }
+
+  /* 3. Font Size Adjustments */
+  #sidebar h3 {
+    font-size: medium;
+  }
+
+  #output h3 {
+    font-size: smaller;
+  }
 }
