@@ -230,7 +230,7 @@ function style_Leakages(feature) {
     rotationAngle: 0.0,
     rotationOrigin: "center center",
     icon: L.icon({
-      iconUrl: "../icons/leakage.svg",
+      iconUrl: "/static/icons/leakage.svg",
       iconSize: [30, 30],
       iconAnchor: [15, 15], // assuming the anchor is the center of the icon
       className: "marker-icon",
@@ -245,7 +245,7 @@ function style_Valves(feature) {
     rotationAngle: 0.0,
     rotationOrigin: "center center",
     icon: L.icon({
-      iconUrl: "../icons/valve.svg",
+      iconUrl: "/static/icons/valve.svg",
       iconSize: [30, 30],
       iconAnchor: [15, 15], // assuming the anchor is the center of the icon
       className: "marker-icon",
@@ -260,7 +260,7 @@ function style_OverheadTank(feature) {
     rotationAngle: 0.0,
     rotationOrigin: "center center",
     icon: L.icon({
-      iconUrl: "../icons/water-tank-svg.svg",
+      iconUrl: "/static/icons/water-tank-svg.svg",
       iconSize: [60, 60],
       iconAnchor: [30, 30], // assuming the anchor is the center of the icon
       className: "marker-icon",
