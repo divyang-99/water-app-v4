@@ -282,6 +282,10 @@ html {
     flex: none;
   }
 
+  #map {
+    height: 70%;
+  }
+
   /* 3. Font Size Adjustments */
   #sidebar h3 {
     font-size: medium;

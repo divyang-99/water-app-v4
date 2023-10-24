@@ -49,6 +49,8 @@ let mapOptions = {
   sleepNote: true,
   // should hovering wake the map? (clicking always will)
   hoverToWake: true,
+  // opacity (between 0 and 1) of inactive map
+  sleepOpacity: 0.7,
 };
 
 // Initialize the map
