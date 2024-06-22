@@ -21,8 +21,9 @@ html {
   position: relative;
   overflow: hidden;
   max-height: 100vh;
+  background-image: url("/static/assets/bg1.jpg");
+  background-size: cover; /* Cover ensures the image covers the entire container */
 }
-
 
 .form-container {
   flex: 3;

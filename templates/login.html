@@ -5,44 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Aumsat Water Budgeting App" />
     <link rel="icon" href="/static/assets/aumsat_logo.png" />
+    <link rel="image" href="/static/assets/bg1.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.9.0/cdn/themes/light.css"
-      type="text/css"
-    />
-    <script
-      type="module"
-      src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.9.0/cdn/shoelace-autoloader.js"
-    ></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.9.0/cdn/themes/light.css" type="text/css" />
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.9.0/cdn/shoelace-autoloader.js"></script>
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-      type="text/css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
-      rel="stylesheet"
-      type="text/css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" type="text/css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="/static/css/login.css" type="text/css" />
     <title>Login</title>
   </head>
   <body>
     <div class="login-container">
       <!-- Left side with image -->
-      <div class="image-container">
-        <img
-          src="https://source.unsplash.com/1600x900/?nature"
-          alt="Background Image"
-        />
-      </div>
+      <div class="image-container"></div>
+
 
       <!-- Right side with form -->
       <div class="form-container">
@@ -55,31 +34,17 @@
           <form id="loginForm">
             <div class="input-group">
               <label for="username">Username</label>
-              <input
-                type="text"
-                id="username"
-                name="username"
-                required
-                autocomplete="username"
-              />
+              <input type="text" id="username" name="username" required autocomplete="username" />
             </div>
             <div class="input-group">
               <label for="password">Password</label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                required
-                autocomplete="current-password"
-              />
+              <input type="password" id="password" name="password" required autocomplete="current-password" />
             </div>
             <button type="submit" id="loginButton">Sign In</button>
           </form>
           <!-- Area to display error messages -->
           <div id="errorMessage" style="color: red; margin-top: 1rem"></div>
-          <div class="copyright">
-            &copy; 2023 Aumsat Technologies LLP | All Rights Reserved
-          </div>
+          <div class="copyright">&copy; 2023 Aumsat Technologies LLP | All Rights Reserved</div>
         </div>
       </div>
     </div>
